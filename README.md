@@ -70,19 +70,20 @@ Currently, two official plugins are available:
 
   ```bash
   export default function App() {
-  return (
-    <div>
-      <Tabbed content={content} />
-    </div>
-  );
+    return (
+      <div>
+        <Tabbed content={content} />
+      </div>
+    );
   }
+  
   // Komponen `App` adalah komponen utama yang akan dirender oleh React.
   // Komponen ini hanya berfungsi untuk merender komponen `Tabbed` dan meneruskan prop `content`.
   ```
 
   ```bash
     function Tabbed({ content }) {
-    const [activeTab, setActiveTab] = useState(0);
+      const [activeTab, setActiveTab] = useState(0);
 
   // `activeTab` adalah state yang menyimpan indeks tab yang aktif.
   // `setActiveTab` adalah fungsi untuk mengubah state `activeTab`.
@@ -97,16 +98,16 @@ Currently, two official plugins are available:
         <Tab num={3} activeTab={activeTab} onClick={setActiveTab} />
       </div>
 
-      {activeTab <= 2 ? (
-        <TabContent
-          item={content.at(activeTab)}
-          key={content.at(activeTab).id}
-        />
-      ) : (
-        <AnotherTabContent />
-      )}
-    </div>
-  );
+        {activeTab <= 2 ? (
+          <TabContent
+            item={content.at(activeTab)}
+            key={content.at(activeTab).id}
+          />
+        ) : (
+          <AnotherTabContent />
+        )}
+      </div>
+    );
   }
 
     // Komponen `Tabbed` adalah komponen yang mengatur logika untuk menampilkan tab.
@@ -117,16 +118,16 @@ Currently, two official plugins are available:
   ```
 
   ```bash
-    function Tab({ num, activeTab, onClick }) {
-        return (
-            <button
-            className={activeTab === num ? "tab active" : "tab"}
-            onClick={() => onClick(num)}
-            >
-            Tab {num + 1}
-            </button>
-         );
-    }
+  function Tab({ num, activeTab, onClick }) {
+    return (
+      <button
+        className={activeTab === num ? "tab active" : "tab"}
+        onClick={() => onClick(num)}
+        >
+        Tab {num + 1}
+      </button>
+    );
+  }
 
   // Komponen `Tab` adalah komponen yang bertanggung jawab untuk merender setiap tombol tab.
   // Jika tab ini adalah tab aktif, maka kelas "active" ditambahkan untuk mengubah gaya.
@@ -198,22 +199,20 @@ Currently, two official plugins are available:
 
   ```bash
     function AnotherTabContent() {
-  return (
-    <div className="tab-content">
-      <h4>Saya adalah tab yg berbeda, jadi data pada State akan hilang 💣</h4>
-      <p>
-        Pada saat kamu kembali ke tab yang memiliki data, maka akan hilang dan
-        mulai dari awal.
-      </p>
-    </div>
-  );
+      return (
+      <div className="tab-content">
+        <h4>Saya adalah tab yg berbeda, jadi data pada State akan hilang 💣</h4>
+        <p>
+          Pada saat kamu kembali ke tab yang memiliki data, maka akan hilang dan
+          mulai dari awal.
+        </p>
+      </div>
+    );
   }
 
   // `AnotherTabContent` adalah komponen yang dirender ketika tab lain dipilih (selain 0, 1, atau 2).
   // Ini hanya menampilkan pesan bahwa data state akan hilang jika tab ini dipilih.
   ```
-
-
 
 
 - ## Installation
@@ -222,7 +221,7 @@ Currently, two official plugins are available:
 
   ```bash
     https://github.com/Cramouchegit/cara-kerja-react.git
-  ````
+  ```
 
 2. Navigate to the project directory:
 
