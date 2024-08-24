@@ -152,8 +152,8 @@ Currently, two official plugins are available:
       handleInc();
     }
 
-  // `handleInc` adalah fungsi untuk menambah jumlah likes dengan 1.
-  // `handleLikes` memanggil `handleInc` tiga kali untuk menambah jumlah likes sebesar 3.
+// `handleInc` adalah fungsi untuk menambah jumlah likes dengan 1.
+// `handleLikes` memanggil `handleInc` tiga kali untuk menambah jumlah likes sebesar 3.
 
     function handleUndo() {
       setShowDetails(true);
@@ -164,8 +164,8 @@ Currently, two official plugins are available:
       setTimeout(handleUndo, 2000);
     }
 
-  // `handleUndo` mengatur ulang tampilan ke kondisi awal (menampilkan detail dan mengatur jumlah likes ke 0).
-  // `handleUndoLater` menunggu selama 2 detik sebelum memanggil `handleUndo`.
+// `handleUndo` mengatur ulang tampilan ke kondisi awal (menampilkan detail dan mengatur jumlah likes ke 0).
+// `handleUndoLater` menunggu selama 2 detik sebelum memanggil `handleUndo`.
 
       return (
         <div className="tab-content">
