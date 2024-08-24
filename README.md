@@ -213,7 +213,7 @@ Currently, two official plugins are available:
   // Ini hanya menampilkan pesan bahwa data state akan hilang jika tab ini dipilih.
   ```
 
-````
+
 
 
 - ## Installation
@@ -222,7 +222,7 @@ Currently, two official plugins are available:
 
   ```bash
     https://github.com/Cramouchegit/cara-kerja-react.git
-````
+  ````
 
 2. Navigate to the project directory:
 
