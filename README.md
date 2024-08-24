@@ -142,59 +142,60 @@ Currently, two official plugins are available:
   // `showDetails` digunakan untuk menentukan apakah konten tab akan ditampilkan atau disembunyikan.
   // `likes` digunakan untuk menyimpan jumlah likes yang diberikan pada konten tab.
 
-    function handleInc() {
-      setLikes((likes) => likes + 1);
-    }
+  function handleInc() {
+    setLikes((likes) => likes + 1);
+  }
 
-    function handleLikes() {
-      handleInc();
-      handleInc();
-      handleInc();
-    }
+  function handleLikes() {
+    handleInc();
+    handleInc();
+    handleInc();
+  }
 
   // `handleInc` adalah fungsi untuk menambah jumlah likes dengan 1.
-  // `handleLikes` memanggil `handleInc` tiga kali untuk menambah jumlah likes sebesar 3.
+  // `handleLikes` memanggil handleInc tiga kali untuk menambah jumlah likes sebesar 3.
 
-    function handleUndo() {
-      setShowDetails(true);
-      setLikes(0);
-    }  
+  function handleUndo() {
+    setShowDetails(true);
+    setLikes(0);
+  }
 
-    function handleUndoLater() {
-      setTimeout(handleUndo, 2000);
-    }
+  function handleUndoLater() {
+    setTimeout(handleUndo, 2000);
+  }
 
   // `handleUndo` mengatur ulang tampilan ke kondisi awal (menampilkan detail dan mengatur jumlah likes ke 0).
-  // `handleUndoLater` menunggu selama 2 detik sebelum memanggil `handleUndo`.
+  // `handleUndoLater` menunggu selama 2 detik sebelum memanggil handleUndo.
 
-      return (
-        <div className="tab-content">
-          <h4>{item.title}</h4>
-          {showDetails && <p>{item.body}</p>}
-    
-          <div className="tab-actions">
-            <button onClick={() => setShowDetails((h) => !h)}>
-              {showDetails ? "Sembunyikan" : "Tampilkan"} Isi
-            </button>
-    
-            <div className="hearts-counter">
-              <span>{likes} 👍</span>
-              <button onClick={handleInc}>+1</button>
-              <button onClick={handleLikes}>+3</button>
-            </div>
-          </div>
-    
-          <div className="tab-undo">
-            <button onClick={handleUndo}>Batal</button>
-            <button onClick={handleUndoLater}>Batal dalam 2d</button>
+    return (
+      <div className="tab-content">
+        <h4>{item.title}</h4>
+        {showDetails && <p>{item.body}</p>}
+  
+        <div className="tab-actions">
+          <button onClick={() => setShowDetails((h) => !h)}>
+            {showDetails ? "Sembunyikan" : "Tampilkan"} Isi
+          </button>
+  
+          <div className="hearts-counter">
+            <span>{likes} 👍</span>
+            <button onClick={handleInc}>+1</button>
+            <button onClick={handleLikes}>+3</button>
           </div>
         </div>
-      );
-    }
+  
+        <div className="tab-undo">
+          <button onClick={handleUndo}>Batal</button>
+          <button onClick={handleUndoLater}>Batal dalam 2d</button>
+        </div>
+      </div>
+    );
+  }
 
   // Komponen `TabContent` digunakan untuk menampilkan konten dari tab yang dipilih.
   // Komponen ini memiliki beberapa fitur seperti menampilkan/menyembunyikan detail,
   // meningkatkan jumlah likes, dan membatalkan aksi dengan mengatur ulang state.
+
   ```
 
   ```bash
