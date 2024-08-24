@@ -1,0 +1,134 @@
+import { useState } from "react";
+import "./App.css";
+
+const content = [
+  {
+    id: 1,
+    title: "Pendidikan Berkualitas",
+    body: "Mendapatkan pendidikan yang baik dan relevan dengan minat dan tujuan karir Anda adalah langkah pertama menuju sukses. Ini membantu membangun fondasi pengetahuan dan keterampilan yang diperlukan.",
+  },
+  {
+    id: 2,
+    title: "Kerja Keras dan Konsistensi",
+    body: "Kerja keras, dedikasi, dan konsistensi adalah kunci untuk mencapai tujuan. Tetap fokus pada upaya Anda, terus belajar, dan tidak mudah menyerah adalah bagian penting dari perjalanan menuju sukses.",
+  },
+  {
+    id: 3,
+    title: "Networking dan Kolaborasi",
+    body: "Membangun hubungan dengan orang lain di bidang Anda, belajar dari mereka, dan bekerja sama dalam proyek-proyek yang relevan dapat membuka pintu untuk peluang baru dan memperluas jaringan profesional Anda.",
+  },
+];
+
+export default function App() {
+  return (
+    <div>
+      <Tabbed content={content} />
+    </div>
+  );
+}
+
+function Tabbed({ content }) {
+  const [activeTab, setActiveTab] = useState(0);
+
+  return (
+    <div>
+      <div className="tabs">
+        <Tab num={0} activeTab={activeTab} onClick={setActiveTab} />
+        <Tab num={1} activeTab={activeTab} onClick={setActiveTab} />
+        <Tab num={2} activeTab={activeTab} onClick={setActiveTab} />
+        <Tab num={3} activeTab={activeTab} onClick={setActiveTab} />
+      </div>
+
+      {activeTab <= 2 ? (
+        <TabContent
+          item={content.at(activeTab)}
+          key={content.at(activeTab.id)}
+        />
+      ) : (
+        <AnotherTabContent />
+      )}
+    </div>
+  );
+}
+
+function Tab({ num, activeTab, onClick }) {
+  return (
+    <button
+      className={activeTab === num ? "tab active" : "tab"}
+      onClick={() => onClick(num)}
+    >
+      Tab {num + 1}
+    </button>
+  );
+}
+
+function TabContent({ item }) {
+  const [showDetails, setShowDetails] = useState(true);
+  const [likes, setLikes] = useState(0);
+
+  function handleInc() {
+    setLikes((likes) => likes + 1);
+  }
+
+  function handleLikes() {
+    // setLikes(likes + 1);
+    // setLikes(likes + 1); // 2
+    // setLikes(likes + 1); // 3
+    // setLikes((likes) => likes + 1);
+    // setLikes((likes) => likes + 1);
+    // setLikes((likes) => {
+    //   const lastLikes = likes + 1;
+    //   console.log(lastLikes);
+    //   return lastLikes;
+    // });
+
+    handleInc();
+    handleInc();
+    handleInc();
+  }
+
+  function handleUndo() {
+    setShowDetails(true);
+    setLikes(0);
+  }
+
+  function handleUndoLater() {
+    setTimeout(handleUndo, 2000);
+  }
+
+  return (
+    <div className="tab-content">
+      <h4>{item.title}</h4>
+      {showDetails && <p>{item.body}</p>}
+
+      <div className="tab-actions">
+        <button onClick={() => setShowDetails((h) => !h)}>
+          {showDetails ? "Sembunyikan" : "Tampilkan"} Isi
+        </button>
+
+        <div className="hearts-counter">
+          <span>{likes} 👍</span>
+          <button onClick={handleInc}>+1</button>
+          <button onClick={handleLikes}>+3</button>
+        </div>
+      </div>
+
+      <div className="tab-undo">
+        <button onClick={handleUndo}>Batal</button>
+        <button onClick={handleUndoLater}>Batal dalam 2d</button>
+      </div>
+    </div>
+  );
+}
+
+function AnotherTabContent() {
+  return (
+    <div className="tab-content">
+      <h4>Saya adalah tab yg berbeda, jadi data pada State akan hilang 💣</h4>
+      <p>
+        Pada saat kamu kembali ke tab yang memiliki data, maka akan hilang dan
+        mulai dari awal.
+      </p>
+    </div>
+  );
+}
