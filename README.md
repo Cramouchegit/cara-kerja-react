@@ -219,9 +219,9 @@ Currently, two official plugins are available:
 
 1. Clone the repository:
 
-  ```bash
-    https://github.com/Cramouchegit/cara-kerja-react.git
-  ```
+```bash
+  https://github.com/Cramouchegit/cara-kerja-react.git
+```
 
 2. Navigate to the project directory:
 
